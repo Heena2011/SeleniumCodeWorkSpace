@@ -34,7 +34,7 @@ public class TC_Lab7 {
 		driver.findElement(By.id("prompt")).click();
 		Alert palert = driver.switchTo().alert();
 		System.out.println("The Message : " + palert.getText());
-		palert.sendKeys("Vivek");
+		palert.sendKeys("Heena");
 		palert.accept();
 		
 
