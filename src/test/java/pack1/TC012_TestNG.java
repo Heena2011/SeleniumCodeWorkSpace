@@ -9,8 +9,13 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.BeforeClass;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.time.Duration;
 
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,11 +35,15 @@ public class TC012_TestNG {
 	  	String title=driver.getTitle();
 		System.out.println("The Title is:"+title);
 		Thread.sleep(3000);
+		login_pageobjects obj = new login_pageobjects(driver);
+		obj.enterusername(username);
+		obj.enterpassword(password);
+		obj.clickonlogin();
 		//WebElement username=driver.findElement(By.name("username"));
 		//username.sendKeys("Admin");
-		driver.findElement(By.name("username")).sendKeys(username);
-		driver.findElement(By.name("password")).sendKeys(password);
-		driver.findElement(By.xpath("//button[@type='submit']")).click();
+//		driver.findElement(By.name("username")).sendKeys(username);
+//		driver.findElement(By.name("password")).sendKeys(password);
+//		driver.findElement(By.xpath("//button[@type='submit']")).click();
 	  }
   @BeforeMethod
   public void beforeMethod() {
@@ -87,6 +96,27 @@ public class TC012_TestNG {
   public void afterSuite() {
 	  System.out.println("After Suite");
   }
+  
+  @DataProvider
+	public Object[][] dp1() throws IOException {
+		String[][] data = new String[3][2];
+
+		String projectpath = System.getProperty("user.dir");
+		File file1 = new File(projectpath + "\\data.xlsx");
+		FileInputStream fs = new FileInputStream(file1);
+		XSSFWorkbook workbook = new XSSFWorkbook(fs);
+		XSSFSheet worksheet = workbook.getSheetAt(0);
+		int rowcount = worksheet.getPhysicalNumberOfRows();
+		System.out.println("rows:" + rowcount);
+
+		for (int i = 0; i <= rowcount; i++) {
+			data[i][0] = worksheet.getRow(i).getCell(0).getStringCellValue();
+
+			data[i][1] = worksheet.getRow(i).getCell(1).getStringCellValue();
+		}
+
+		return data;
+	}
  
 }
 //public class TC0012_TestNG {
