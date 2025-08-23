@@ -1,13 +1,5 @@
 package pack1;
 
-import org.testng.annotations.Test;
-
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -22,50 +14,19 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
-public class TC014_TestNG2 {
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Lab14_TestNG {
 
 	WebDriver driver;
 	 String projectpath=System.getProperty("user.dir")  ;
-//	 @Test(dataProvider = "dp")
-//	  public void f(String username, String password) throws InterruptedException, IOException {
-//		  	String title=driver.getTitle();
-//			System.out.println("The Title is:"+title);
-//			//Assert.assertEquals(title, "Amazon");
-//			ExtentReports extent=new ExtentReports();
-//			String reportpath=projectpath+"\\Augreport.html";
-//			ExtentSparkReporter spark=new ExtentSparkReporter(reportpath);
-//			extent.attachReporter(spark);
-//			ExtentTest test=extent.createTest("Verify the title of the page");
-//			Thread.sleep(3000);
-//			if(title.equals("OrangeHRM"))
-//			{
-//				test.pass("title is matched");
-//			}
-//			else
-//			{
-//				test.fail("title is not mathed");
-//			}
-//			
-//			File scr=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-//			String dest=projectpath+"\\screenshot1.png";
-//				File detfile=new File(dest);
-//				FileUtils.copyFile(scr, detfile);
-//				test.addScreenCaptureFromPath(dest);
-//			
-//			
-//			extent.flush();
-//			Thread.sleep(3000);
-//			//WebElement username=driver.findElement(By.name("username"));
-//			//username.sendKeys("Admin");
-//			login_pageobjects obj=new login_pageobjects(driver);
-//			obj.enterusername(username);
-//			obj.enterpassword(password);
-//			obj.clickonlogin();
-//		//	driver.findElement(By.name("username")).sendKeys(username);
-//			//driver.findElement(By.name("password")).sendKeys(password);
-//		//	driver.findElement(By.xpath("//button[@type='submit']")).click();
-//		  }
+
 	  @BeforeMethod
 	  public void beforeMethod() {
 		  System.out.println("Before method");
@@ -141,4 +102,5 @@ public class TC014_TestNG2 {
 	      // 🔹 Print extra values from Excel
 	      System.out.println("Email=" + email + ", Role=" + role + 
 	                         ", City=" + city + ", Mobile=" + mobile);
-	  }}
+	  }
+}
